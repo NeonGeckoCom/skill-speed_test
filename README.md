@@ -1,4 +1,4 @@
-# ![](https://0000.us/klatchat/app/files/neon_images/icons/neon_paw.png)speed-test
+# ![](https://0000.us/klatchat/app/files/neon_images/icons/neon_paw.png)Speed Test
 
 # Summary
 
