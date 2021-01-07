@@ -22,11 +22,15 @@ from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import LOG
 from adapt.intent import IntentBuilder
 import speedtest
+from neon_utils import stub_missing_parameters, skill_needs_patching
 
 
 class SpeedTestSkill(MycroftSkill):
     def __init__(self):
         super(SpeedTestSkill, self).__init__(name="SpeedTestSkill")
+        if skill_needs_patching(self):
+            LOG.warning("Patching Neon skill for non-neon core")
+            stub_missing_parameters(self)
 
     def initialize(self):
         run_test_intent = IntentBuilder("runSpeedTestIntent").require("RunSpeedTest").build()
@@ -42,7 +46,7 @@ class SpeedTestSkill(MycroftSkill):
         down = round(res['download']/1000000)
         up = round(res['upload']/1000000)
         ping = round(res['ping'])
-        LOG.debug(f"DM: {res}")
+        LOG.debug(res)
         self.speak_dialog("Results", {'down': down, 'up': up, 'ping': ping})
 
     def stop(self):
