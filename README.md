@@ -1,28 +1,28 @@
-# ![](https://0000.us/klatchat/app/files/neon_images/icons/neon_paw.png)Speed Test
+# <img src='https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png' card_color="#FF8600" width="50" style="vertical-align:bottom">Speed Test
 
-# Summary
+## Summary
 
 Skill used to test your internet speed
 
-# Requirements
+## Requirements
 
 speedtest
 
-# Description
+## Description
 
 This skill uses speedtest.net to check your internet speed
 
-# How to Use
+## Examples
 
 Ask Neon to start a test:
 
 - "run a speed test"
 
-# Location
+## Location
 
     ${skills}/speed-test.neon
 
-# Files
+## Files
 
     speed-test.neon/vocab
     speed-test.neon/vocab/en-us
@@ -34,10 +34,10 @@ Ask Neon to start a test:
     speed-test.neon/dialog/en-us/Results.dialog
   
 
-# Class Diagram
+## Class Diagram
 
 
-# Available Intents
+## Available Intents
 <details>
 <summary>Click to expand.</summary>
 <br>
@@ -55,7 +55,7 @@ Ask Neon to start a test:
 
 </details>
 
-# Examples
+## Details
 
 ### Text
 
@@ -68,11 +68,21 @@ Ask Neon to start a test:
 
   
 
-# Contact Support
+## Contact Support
 
 Use the [link](https://neongecko.com/ContactUs) or [submit an issue on GitHub](https://help.github.com/en/articles/creating-an-issue)
 
-# Credits
+## Category
+**Daily**
+Productivity
 
-reginaneon [neongeckocom](https://neongecko.com/) Mycroft AI
+## Credits
+@neongeckocom
+@neondaniel
+@reginaneon
 
+## Tags
+#NeonGecko
+#NeonAI
+#Internet
+#Utilities
