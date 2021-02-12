@@ -10,6 +10,14 @@
     "desktopFile": false,
     "warning": "",
     "systemDeps": false,
+    "requirements": {
+        "python": [
+            "git+https://github.com/neongeckocom/neon-skill-utils",
+            "speedtest-cli"
+        ],
+        "system": {},
+        "skill": []
+    },
     "platforms": [
         "i386",
         "x86_64",
@@ -32,6 +40,7 @@
         "Utilities"
     ],
     "skillname": "Speed Test",
-    "authorname": "NeonGeckoCom",
-    "foldername": "speed-test.neon"
+    "authorname": "Neon",
+    "foldername": "speed-test.neon",
+    "download_url": "https://api.github.com/repos/NeonGeckoCom/speed-test.neon/zipball/master"
 }
