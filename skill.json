@@ -10,6 +10,14 @@
     "desktopFile": false,
     "warning": "",
     "systemDeps": false,
+    "requirements": {
+        "python": [
+            "git+https://github.com/neongeckocom/neon-skill-utils",
+            "speedtest-cli"
+        ],
+        "system": {},
+        "skill": []
+    },
     "platforms": [
         "i386",
         "x86_64",
@@ -18,16 +26,21 @@
         "arm"
     ],
     "branch": "master",
-    "license": "NeonAI Licensed",
-    "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_paw.png",
-    "category": null,
+    "license": "NeonAI License v1.0",
+    "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
+    "category": "Daily",
     "categories": [
-        ""
+        "Daily",
+        "Productivity"
     ],
     "tags": [
-        ""
+        "NeonGecko",
+        "NeonAI",
+        "Internet",
+        "Utilities"
     ],
     "skillname": "Speed Test",
-    "authorname": "NeonGeckoCom",
-    "foldername": "speed-test.neon"
+    "authorname": "Neon",
+    "foldername": "speed-test.neon",
+    "download_url": "https://api.github.com/repos/NeonGeckoCom/speed-test.neon/zipball/master"
 }
