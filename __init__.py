@@ -17,27 +17,24 @@
 # US Patents 2008-2021: US7424516, US20140161250, US20140177813, US8638908, US8068604, US8553852, US10530923, US10530924
 # China Patent: CN102017585  -  Europe Patent: EU2156652  -  Patents Pending
 
-# import subprocess
-from mycroft.skills.core import MycroftSkill
-from mycroft.util.log import LOG
+from neon_utils.skills.neon_skill import NeonSkill, LOG
 from adapt.intent import IntentBuilder
 import speedtest
-from neon_utils import stub_missing_parameters, skill_needs_patching
 
 
-class SpeedTestSkill(MycroftSkill):
+class SpeedTestSkill(NeonSkill):
     def __init__(self):
         super(SpeedTestSkill, self).__init__(name="SpeedTestSkill")
-        if skill_needs_patching(self):
-            LOG.warning("Patching Neon skill for non-neon core")
-            stub_missing_parameters(self)
+        # if skill_needs_patching(self):
+        #     LOG.warning("Patching Neon skill for non-neon core")
+        #     stub_missing_parameters(self)
 
     def initialize(self):
         run_test_intent = IntentBuilder("runSpeedTestIntent").require("RunSpeedTest").build()
         self.register_intent(run_test_intent, self.run_speed_test)
 
     def run_speed_test(self, message):
-        self.speak("Starting a speed test.")
+        self.speak_dialog("StartTest")
         test = speedtest.Speedtest()
         test.get_best_server()
         test.download()
