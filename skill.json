@@ -1,6 +1,6 @@
 {
     "title": "Speed Test",
-    "url": "https://github.com/NeonGeckoCom/speed-test.neon",
+    "url": "https://github.com/NeonGeckoCom/skill-speed_test.git",
     "summary": "Skill used to test your internet speed",
     "short_description": "Skill used to test your internet speed",
     "description": "This skill uses speedtest.net to check your internet speed",
@@ -27,7 +27,7 @@
         "arm"
     ],
     "branch": "master",
-    "license": "NeonAI License v1.0",
+    "license": "BSD-3-Clause",
     "icon": "https://0000.us/klatchat/app/files/neon_images/icons/neon_skill.png",
     "category": "Daily",
     "categories": [
@@ -39,6 +39,11 @@
         "NeonAI",
         "Internet",
         "Utilities"
+    ],
+    "credits": [
+        "NeonDaniel",
+        "NeonGeckoCom",
+        "reginaneon"
     ],
     "skillname": "Speed Test",
     "authorname": "NeonGeckoCom",
