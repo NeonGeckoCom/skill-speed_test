@@ -82,7 +82,7 @@ Productivity
 [reginaneon](https://github.com/reginaneon)
 
 ## Tags
-#NeonGecko
+#NeonGecko Original
 #NeonAI
 #Internet
 #Utilities
