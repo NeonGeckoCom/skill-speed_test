@@ -77,12 +77,12 @@ Use the [link](https://neongecko.com/ContactUs) or [submit an issue on GitHub](h
 Productivity
 
 ## Credits
-@neongeckocom
-@neondaniel
-@reginaneon
+[NeonDaniel](https://github.com/NeonDaniel)
+[NeonGeckoCom](https://github.com/NeonGeckoCom)
+[reginaneon](https://github.com/reginaneon)
 
 ## Tags
-#NeonGecko
+#NeonGecko Original
 #NeonAI
 #Internet
 #Utilities
