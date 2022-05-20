@@ -26,36 +26,54 @@
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import speedtest
+import unittest
 
-from neon_utils.skills.neon_skill import NeonSkill, LOG
-from adapt.intent import IntentBuilder
-
-from mycroft.skills import intent_handler
-
-
-class SpeedTestSkill(NeonSkill):
-    def __init__(self):
-        super(SpeedTestSkill, self).__init__(name="SpeedTestSkill")
-
-    @intent_handler(IntentBuilder("RunSpeedTestIntent")
-                    .require("run_speed_test").build())
-    def handle_run_speed_test(self, _):
-        self.speak_dialog("start_test")
-        test = speedtest.Speedtest()
-        test.get_best_server()
-        test.download()
-        test.upload()
-        res = test.results.dict()
-        down = round(res['download']/1000000)
-        up = round(res['upload']/1000000)
-        ping = round(res['ping'])
-        LOG.debug(res)
-        self.speak_dialog("results", {'down': down, 'up': up, 'ping': ping})
-
-    def stop(self):
-        pass
+from copy import deepcopy
+from os import mkdir
+from os.path import dirname, join, exists
+from mock import Mock
+from mock.mock import call
+from ovos_utils.messagebus import FakeBus
+from mycroft_bus_client import Message
+from neon_utils.configuration_utils import get_neon_local_config, get_neon_user_config
+from mycroft.skills.skill_loader import SkillLoader
 
 
-def create_skill():
-    return SpeedTestSkill()
+class TestSkill(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        bus = FakeBus()
+        bus.run_in_thread()
+        skill_loader = SkillLoader(bus, dirname(dirname(__file__)))
+        skill_loader.load()
+        cls.skill = skill_loader.instance
+
+        # Define a directory to use for testing
+        cls.test_fs = join(dirname(__file__), "skill_fs")
+        if not exists(cls.test_fs):
+            mkdir(cls.test_fs)
+
+        # Override the configuration and fs paths to use the test directory
+        cls.skill.settings_write_path = cls.test_fs
+        cls.skill.file_system.path = cls.test_fs
+        cls.skill._init_settings()
+        cls.skill.initialize()
+
+        # Override speak and speak_dialog to test passed arguments
+        cls.skill.speak = Mock()
+        cls.skill.speak_dialog = Mock()
+
+    def setUp(self):
+        self.skill.speak.reset_mock()
+        self.skill.speak_dialog.reset_mock()
+
+    def test_handle_run_speed_test(self):
+        self.skill.handle_run_speed_test(Message("test"))
+        self.skill.speak_dialog.assert_any_call("start_test")
+        args = self.skill.speak_dialog.call_args
+        self.assertEqual(args[0][0], "results")
+        self.assertEqual(set(args[0][1].keys()), {'down', 'up', 'ping'})
+
+
+if __name__ == '__main__':
+    unittest.main()
