@@ -26,24 +26,22 @@
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+import speedtest
+
 from neon_utils.skills.neon_skill import NeonSkill, LOG
 from adapt.intent import IntentBuilder
-import speedtest
+
+from mycroft.skills import intent_handler
 
 
 class SpeedTestSkill(NeonSkill):
     def __init__(self):
         super(SpeedTestSkill, self).__init__(name="SpeedTestSkill")
-        # if skill_needs_patching(self):
-        #     LOG.warning("Patching Neon skill for non-neon core")
-        #     stub_missing_parameters(self)
 
-    def initialize(self):
-        run_test_intent = IntentBuilder("runSpeedTestIntent").require("RunSpeedTest").build()
-        self.register_intent(run_test_intent, self.run_speed_test)
-
-    def run_speed_test(self, message):
-        self.speak_dialog("StartTest")
+    @intent_handler(IntentBuilder("RunSpeedTestIntent")
+                    .require("run_speed_test").build())
+    def handle_run_speed_test(self, _):
+        self.speak_dialog("start_test")
         test = speedtest.Speedtest()
         test.get_best_server()
         test.download()
@@ -53,7 +51,7 @@ class SpeedTestSkill(NeonSkill):
         up = round(res['upload']/1000000)
         ping = round(res['ping'])
         LOG.debug(res)
-        self.speak_dialog("Results", {'down': down, 'up': up, 'ping': ping})
+        self.speak_dialog("results", {'down': down, 'up': up, 'ping': ping})
 
     def stop(self):
         pass
