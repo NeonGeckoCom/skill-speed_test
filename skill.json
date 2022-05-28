@@ -10,7 +10,14 @@
     "desktopFile": false,
     "warning": "",
     "systemDeps": false,
-    "requirements": "speedtest",
+    "requirements": {
+        "python": [
+            "neon-utils~=0.6",
+            "speedtest-cli"
+        ],
+        "system": {},
+        "skill": []
+    },
     "incompatible_skills": [],
     "platforms": [
         "i386",
@@ -40,8 +47,5 @@
     ],
     "skillname": "skill-speed_test",
     "authorname": "NeonGeckoCom",
-    "foldername": null,
-    "location": "    ${skills}/speed-test.neon",
-    "files": "    speed-test.neon/vocab     speed-test.neon/vocab/en-us     speed-test.neon/vocab/en-us/RunSpeedTest.voc     speed-test.neon/README.md     speed-test.neon/__init__.py     speed-test.neon/dialog     speed-test.neon/dialog/en-us     speed-test.neon/dialog/en-us/Results.dialog",
-    "available intents": "<details> <summary>Click to expand.</summary> <br> ### RunSpeedTest.voc     how fast is my connection     how slow is my connection     how fast is my internet     how slow is my internet     check my internet speed     test my internet speed     internet speed test </details>"
+    "foldername": null
 }
