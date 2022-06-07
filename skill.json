@@ -1,6 +1,6 @@
 {
     "title": "Speed Test",
-    "url": "https://github.com/NeonGeckoCom/skill-speed_test.git",
+    "url": "https://github.com/NeonGeckoCom/skill-speed_test",
     "summary": "Skill used to test your internet speed",
     "short_description": "Skill used to test your internet speed",
     "description": "This skill uses speedtest.net to check your internet speed",
@@ -12,7 +12,7 @@
     "systemDeps": false,
     "requirements": {
         "python": [
-            "neon-utils>=0.5.7",
+            "neon-utils~=0.6",
             "speedtest-cli"
         ],
         "system": {},
@@ -45,7 +45,7 @@
         "NeonGeckoCom",
         "reginaneon"
     ],
-    "skillname": "Speed Test",
+    "skillname": "skill-speed_test",
     "authorname": "NeonGeckoCom",
     "foldername": null
 }

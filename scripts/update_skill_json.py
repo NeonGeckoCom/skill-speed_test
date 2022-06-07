@@ -26,36 +26,32 @@
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import speedtest
+import json
+from os.path import dirname, join
+from pprint import pprint
+from neon_utils.packaging_utils import build_skill_spec
 
-from neon_utils.skills.neon_skill import NeonSkill, LOG
-from adapt.intent import IntentBuilder
-
-from mycroft.skills import intent_handler
-
-
-class SpeedTestSkill(NeonSkill):
-    def __init__(self):
-        super(SpeedTestSkill, self).__init__(name="SpeedTestSkill")
-
-    @intent_handler(IntentBuilder("RunSpeedTestIntent")
-                    .require("run_speed_test").build())
-    def handle_run_speed_test(self, _):
-        self.speak_dialog("start_test")
-        test = speedtest.Speedtest()
-        test.get_best_server()
-        test.download()
-        test.upload()
-        res = test.results.dict()
-        down = round(res['download']/1000000)
-        up = round(res['upload']/1000000)
-        ping = round(res['ping'])
-        LOG.debug(res)
-        self.speak_dialog("results", {'down': down, 'up': up, 'ping': ping})
-
-    def stop(self):
-        pass
+skill_dir = dirname(dirname(__file__))
 
 
-def create_skill():
-    return SpeedTestSkill()
+def get_skill_json():
+    print(f"skill_dir={skill_dir}")
+    skill_json = join(skill_dir, "skill.json")
+    skill_spec = build_skill_spec(skill_dir)
+    pprint(skill_spec)
+    try:
+        with open(skill_json) as f:
+            current = json.load(f)
+    except Exception as e:
+        print(e)
+        current = None
+    if current != skill_spec:
+        print("Skill Updated. Writing skill.json")
+        with open(skill_json, 'w+') as f:
+            json.dump(skill_spec, f, indent=4)
+    else:
+        print("No changes to skill.json")
+
+
+if __name__ == "__main__":
+    get_skill_json()
