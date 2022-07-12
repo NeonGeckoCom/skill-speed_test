@@ -28,14 +28,11 @@
 
 import unittest
 
-from copy import deepcopy
 from os import mkdir
 from os.path import dirname, join, exists
 from mock import Mock
-from mock.mock import call
 from ovos_utils.messagebus import FakeBus
 from mycroft_bus_client import Message
-from neon_utils.configuration_utils import get_neon_local_config, get_neon_user_config
 from mycroft.skills.skill_loader import SkillLoader
 
 
