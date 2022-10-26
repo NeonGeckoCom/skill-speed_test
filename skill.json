@@ -5,7 +5,8 @@
     "short_description": "Skill used to test your internet speed",
     "description": "This skill uses speedtest.net to check your internet speed",
     "examples": [
-        "run a speed test"
+        "Run a speed test.",
+        "How fast is my internet?"
     ],
     "desktopFile": false,
     "warning": "",
