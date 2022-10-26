@@ -12,7 +12,8 @@ This skill uses speedtest.net to check your internet speed
 
 Ask Neon to start a test:
 
-- "run a speed test"
+- "Run a speed test."
+- "How fast is my internet?"
 
 ## Contact Support
 
