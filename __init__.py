@@ -40,8 +40,12 @@ class SpeedTestSkill(NeonSkill):
 
     @intent_handler(IntentBuilder("RunSpeedTestIntent")
                     .require("run_speed_test").build())
-    def handle_run_speed_test(self, _):
+    def handle_run_speed_test(self, message):
         self.speak_dialog("start_test")
+        self.bus.emit(message.forward(
+            "ovos.notification.api.set.controlled",
+            {"sender": self.skill_id,
+             "text": self.translate("notify_testing")}))
         test = speedtest.Speedtest()
         test.get_best_server()
         test.download()
@@ -51,6 +55,8 @@ class SpeedTestSkill(NeonSkill):
         up = round(res['upload']/1000000)
         ping = round(res['ping'])
         LOG.debug(res)
+        self.bus.emit(message.forward(
+            "ovos.notification.api.remove.controlled"))
         self.speak_dialog("results", {'down': down, 'up': up, 'ping': ping})
 
     def stop(self):
