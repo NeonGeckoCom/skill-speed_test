@@ -65,12 +65,19 @@ class TestSkill(unittest.TestCase):
         self.skill.speak_dialog.reset_mock()
 
     def test_handle_run_speed_test(self):
+        on_notification_set = Mock()
+        on_notification_clear = Mock()
+        self.skill.bus.on("ovos.notification.api.set.controlled",
+                          on_notification_set)
+        self.skill.bus.on("ovos.notification.api.remove.controlled",
+                          on_notification_clear)
         self.skill.handle_run_speed_test(Message("test"))
         self.skill.speak_dialog.assert_any_call("start_test")
         args = self.skill.speak_dialog.call_args
         self.assertEqual(args[0][0], "results")
         self.assertEqual(set(args[0][1].keys()), {'down', 'up', 'ping'})
-
+        on_notification_set.assert_called_once()
+        on_notification_clear.assert_called_once()
 
 if __name__ == '__main__':
     unittest.main()
