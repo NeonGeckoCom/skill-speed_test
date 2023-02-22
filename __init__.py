@@ -28,7 +28,10 @@
 
 import speedtest
 
-from neon_utils.skills.neon_skill import NeonSkill, LOG
+from ovos_utils import classproperty
+from ovos_utils.log import LOG
+from ovos_utils.process_utils import RuntimeRequirements
+from neon_utils.skills.neon_skill import NeonSkill
 from adapt.intent import IntentBuilder
 
 from mycroft.skills import intent_handler
@@ -37,6 +40,18 @@ from mycroft.skills import intent_handler
 class SpeedTestSkill(NeonSkill):
     def __init__(self):
         super(SpeedTestSkill, self).__init__(name="SpeedTestSkill")
+
+    @classproperty
+    def runtime_requirements(self):
+        return RuntimeRequirements(network_before_load=False,
+                                   internet_before_load=False,
+                                   gui_before_load=False,
+                                   requires_internet=True,
+                                   requires_network=True,
+                                   requires_gui=False,
+                                   no_internet_fallback=False,
+                                   no_network_fallback=False,
+                                   no_gui_fallback=True)
 
     @intent_handler(IntentBuilder("RunSpeedTestIntent")
                     .require("run_speed_test").build())
