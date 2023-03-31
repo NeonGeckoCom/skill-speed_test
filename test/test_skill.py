@@ -79,5 +79,6 @@ class TestSkill(unittest.TestCase):
         on_notification_set.assert_called_once()
         on_notification_clear.assert_called_once()
 
+
 if __name__ == '__main__':
     unittest.main()
