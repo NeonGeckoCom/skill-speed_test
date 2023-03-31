@@ -5,11 +5,7 @@ languages:
   - "en-us"
 
 # vocab is lowercase .voc file basenames
-vocab:
-  - license
-  - long
-  - skills
-  - tell
+vocab: []
 
 # dialog is .dialog file basenames (case-sensitive)
 dialog:
