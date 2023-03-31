@@ -53,7 +53,7 @@ class SpeedTestSkill(NeonSkill):
                                    no_network_fallback=False,
                                    no_gui_fallback=True)
 
-    @intent_file_handler("run_speed_test")
+    @intent_file_handler("run_speed_test.intent")
     def handle_run_speed_test(self, message):
         self.speak_dialog("start_test")
         self.bus.emit(message.forward(
