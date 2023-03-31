@@ -34,7 +34,7 @@ from ovos_utils.process_utils import RuntimeRequirements
 from neon_utils.skills.neon_skill import NeonSkill
 from adapt.intent import IntentBuilder
 
-from mycroft.skills import intent_handler
+from mycroft.skills import intent_file_handler
 
 
 class SpeedTestSkill(NeonSkill):
@@ -53,8 +53,7 @@ class SpeedTestSkill(NeonSkill):
                                    no_network_fallback=False,
                                    no_gui_fallback=True)
 
-    @intent_handler(IntentBuilder("RunSpeedTestIntent")
-                    .require("run_speed_test").build())
+    @intent_file_handler("run_speed_test")
     def handle_run_speed_test(self, message):
         self.speak_dialog("start_test")
         self.bus.emit(message.forward(

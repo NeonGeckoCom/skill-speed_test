@@ -1,0 +1,38 @@
+# Specify intents to test here. Valid test cases are as follows:
+
+# Basic intent match tests only:
+#lang:
+#  intent_name:
+#    - example utterance
+#    - other example utterance
+
+# Intent tests with expected vocab/entity matches:
+#lang:
+#  intent_name:
+#    - example_utterance:
+#        - expected vocab name
+#        - other expected vocab name
+
+# Intent tests with specific vocab/entity extraction tests:
+#lang:
+#  intent_name:
+#    - example_utterance:
+#        - expected_vocab_key: expected_vocab_value
+#        - expected_entity_key: expected_entity_value
+
+
+en-us:
+  run_speed_test.intent:
+  - run a speed test
+  - start an internet speed test
+  - test my internet connection
+  - how fast is my internet connection
+  - how slow is my connection
+  - speed test
+
+unmatched intents:
+  en-us:
+    - what is the speed limit
+    - how fast can you run
+    - what is an internet connection
+    - what is my connection
