@@ -41,8 +41,11 @@ class SpeedTestSkill(NeonSkill):
     def __init__(self):
         super(SpeedTestSkill, self).__init__(name="SpeedTestSkill")
         self.test = speedtest.Speedtest()
-        server = self.test.get_best_server()
-        LOG.debug(f"Selected: {server}")
+        try:
+            server = self.test.get_best_server()
+            LOG.debug(f"Selected: {server}")
+        except Exception as e:
+            LOG.exception(e)
         # TODO: Support configured server
 
     @classproperty
