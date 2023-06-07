@@ -40,6 +40,10 @@ from mycroft.skills import intent_file_handler
 class SpeedTestSkill(NeonSkill):
     def __init__(self):
         super(SpeedTestSkill, self).__init__(name="SpeedTestSkill")
+        self.test = speedtest.Speedtest()
+        server = self.test.get_best_server()
+        LOG.debug(f"Selected: {server}")
+        # TODO: Support configured server
 
     @classproperty
     def runtime_requirements(self):
@@ -60,15 +64,13 @@ class SpeedTestSkill(NeonSkill):
             "ovos.notification.api.set.controlled",
             {"sender": self.skill_id,
              "text": self.translate("notify_testing")}))
-        test = speedtest.Speedtest()
-        test.get_best_server()
-        test.download()
-        test.upload()
-        res = test.results.dict()
+        self.test.download()
+        self.test.upload()
+        res = self.test.results.dict()
         down = round(res['download']/1000000)
         up = round(res['upload']/1000000)
         ping = round(res['ping'])
-        LOG.debug(res)
+        LOG.info(res)
         self.bus.emit(message.forward(
             "ovos.notification.api.remove.controlled"))
         self.speak_dialog("results", {'down': down, 'up': up, 'ping': ping})
