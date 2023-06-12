@@ -70,6 +70,7 @@ class SpeedTestSkill(NeonSkill):
         self.test.download()
         self.test.upload()
         res = self.test.results.dict()
+        # TODO: Better rounding logic for kbps vs Mbps vs Gbps
         down = round(res['download']/1000000)
         up = round(res['upload']/1000000)
         ping = round(res['ping'])
