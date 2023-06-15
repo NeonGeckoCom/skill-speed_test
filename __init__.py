@@ -32,14 +32,13 @@ from ovos_utils import classproperty
 from ovos_utils.log import LOG
 from ovos_utils.process_utils import RuntimeRequirements
 from neon_utils.skills.neon_skill import NeonSkill
-from adapt.intent import IntentBuilder
 
 from mycroft.skills import intent_file_handler
 
 
 class SpeedTestSkill(NeonSkill):
-    def __init__(self):
-        super(SpeedTestSkill, self).__init__(name="SpeedTestSkill")
+    def __init__(self, **kwargs):
+        NeonSkill.__init__(self, **kwargs)
         self.test = speedtest.Speedtest()
         try:
             server = self.test.get_best_server()
@@ -81,7 +80,3 @@ class SpeedTestSkill(NeonSkill):
 
     def stop(self):
         pass
-
-
-def create_skill():
-    return SpeedTestSkill()
