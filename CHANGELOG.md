@@ -1,20 +1,12 @@
 # Changelog
 
-## [0.5.2a2](https://github.com/NeonGeckoCom/skill-speed_test/tree/0.5.2a2) (2023-06-15)
+## [1.0.1a1](https://github.com/NeonGeckoCom/skill-speed_test/tree/1.0.1a1) (2023-08-07)
 
-[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/0.5.2a1...0.5.2a2)
-
-**Merged pull requests:**
-
-- Deprecate `create_skill` method and update `__init__` for best practices [\#44](https://github.com/NeonGeckoCom/skill-speed_test/pull/44) ([NeonDaniel](https://github.com/NeonDaniel))
-
-## [0.5.2a1](https://github.com/NeonGeckoCom/skill-speed_test/tree/0.5.2a1) (2023-06-12)
-
-[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/0.5.1...0.5.2a1)
+[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/1.0.0...1.0.1a1)
 
 **Merged pull requests:**
 
-- Refactor mycroft-messagebus-client to ovos-bus-client [\#43](https://github.com/NeonGeckoCom/skill-speed_test/pull/43) ([NeonDaniel](https://github.com/NeonDaniel))
+- More efficent API use [\#46](https://github.com/NeonGeckoCom/skill-speed_test/pull/46) ([NeonDaniel](https://github.com/NeonDaniel))
 
 
 

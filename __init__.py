@@ -39,13 +39,19 @@ from mycroft.skills import intent_file_handler
 class SpeedTestSkill(NeonSkill):
     def __init__(self, **kwargs):
         NeonSkill.__init__(self, **kwargs)
-        self.test = speedtest.Speedtest()
+        self._test = None
         try:
             server = self.test.get_best_server()
             LOG.debug(f"Selected: {server}")
         except Exception as e:
             LOG.exception(e)
         # TODO: Support configured server
+
+    @property
+    def test(self):
+        # TODO: Handle 403 errors
+        self._test = self._test or speedtest.Speedtest()
+        return self._test
 
     @classproperty
     def runtime_requirements(self):
