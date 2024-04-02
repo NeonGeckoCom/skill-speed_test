@@ -1,12 +1,20 @@
 # Changelog
 
-## [1.0.1a1](https://github.com/NeonGeckoCom/skill-speed_test/tree/1.0.1a1) (2023-08-07)
+## [1.0.2a2](https://github.com/NeonGeckoCom/skill-speed_test/tree/1.0.2a2) (2024-04-02)
 
-[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/1.0.0...1.0.1a1)
+[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/1.0.2a1...1.0.2a2)
 
 **Merged pull requests:**
 
-- More efficent API use [\#46](https://github.com/NeonGeckoCom/skill-speed_test/pull/46) ([NeonDaniel](https://github.com/NeonDaniel))
+- Update test dependency to stable spec [\#49](https://github.com/NeonGeckoCom/skill-speed_test/pull/49) ([NeonDaniel](https://github.com/NeonDaniel))
+
+## [1.0.2a1](https://github.com/NeonGeckoCom/skill-speed_test/tree/1.0.2a1) (2024-02-05)
+
+[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/1.0.1...1.0.2a1)
+
+**Merged pull requests:**
+
+- Support ovos-utils 0.1 [\#48](https://github.com/NeonGeckoCom/skill-speed_test/pull/48) ([NeonDaniel](https://github.com/NeonDaniel))
 
 
 
