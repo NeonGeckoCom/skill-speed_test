@@ -1,5 +1,5 @@
-neon-utils~=1.0
+neon-utils~=1.12
 speedtest-cli~=2.1
 ovos-utils~=0.0, >=0.0.28
-ovos-bus-client~=0.0.3
-ovos-workshop~=0.0.15
+ovos-bus-client~=0.0,>=0.0.3
+ovos-workshop~=0.0,>=0.0.15
