@@ -1,12 +1,20 @@
 # Changelog
 
-## [1.0.3a1](https://github.com/NeonGeckoCom/skill-speed_test/tree/1.0.3a1) (2024-05-10)
+## [1.0.4a2](https://github.com/NeonGeckoCom/skill-speed_test/tree/1.0.4a2) (2025-03-11)
 
-[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/1.0.2...1.0.3a1)
+[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/1.0.4a1...1.0.4a2)
 
 **Merged pull requests:**
 
-- Remove `mycroft` imports [\#51](https://github.com/NeonGeckoCom/skill-speed_test/pull/51) ([NeonDaniel](https://github.com/NeonDaniel))
+- Update automation, gitignore, and license notices [\#54](https://github.com/NeonGeckoCom/skill-speed_test/pull/54) ([NeonDaniel](https://github.com/NeonDaniel))
+
+## [1.0.4a1](https://github.com/NeonGeckoCom/skill-speed_test/tree/1.0.4a1) (2024-09-17)
+
+[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/1.0.3...1.0.4a1)
+
+**Merged pull requests:**
+
+- Update OVOS depdendencies for 0.x compat [\#53](https://github.com/NeonGeckoCom/skill-speed_test/pull/53) ([NeonDaniel](https://github.com/NeonDaniel))
 
 
 
