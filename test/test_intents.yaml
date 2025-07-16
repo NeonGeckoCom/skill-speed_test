@@ -30,9 +30,24 @@ en-us:
   - how slow is my connection
   - speed test
 
+uk-ua:
+  run_speed_test.intent:
+  - запусти тест швидкості
+  - почни перевірку швидкості інтернету
+  - перевір мій інтернет-зв'язок
+  - наскільки швидкий мій інтернет
+  - наскільки повільний мій зв'язок
+  - тест швидкості
+  - яка швидкість інтернету
+
 unmatched intents:
   en-us:
     - what is the speed limit
     - how fast can you run
     - what is an internet connection
     - what is my connection
+  uk-ua:
+    - яке обмеження швидкості
+    - як швидко ти бігаєш
+    - що таке інтернет-з'єднання
+    - який у мене зв'язок
