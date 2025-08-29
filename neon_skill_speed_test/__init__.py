@@ -39,11 +39,6 @@ class SpeedTestSkill(NeonSkill):
     def __init__(self, **kwargs):
         NeonSkill.__init__(self, **kwargs)
         self._test = None
-        try:
-            server = self.test.get_best_server()
-            LOG.debug(f"Selected: {server}")
-        except Exception as e:
-            LOG.exception(e)
         # TODO: Support configured server
 
     @property
