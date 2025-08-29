@@ -14,8 +14,11 @@ jobs:
     uses: neongeckocom/.github/.github/workflows/skill_test_intents.yml@master
     with:
       test_padatious: true
+      skill_entrypoint: skill-speed_test.neongeckocom
   skill_resource_tests:
     uses: neongeckocom/.github/.github/workflows/skill_test_resources.yml@master
+    with:
+      skill_entrypoint: skill-speed_test.neongeckocom
   skill_install_tests:
     uses: neongeckocom/.github/.github/workflows/skill_test_installation.yml@master
     with:
