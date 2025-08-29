@@ -32,6 +32,8 @@ from mock import Mock
 from ovos_bus_client import Message
 from neon_minerva.tests.skill_unit_test_base import SkillTestCase
 
+from neon_skill_speed_test.models import SpeedTestResult
+
 
 class TestSkillMethods(SkillTestCase):
     def test_handle_run_speed_test(self):
@@ -49,6 +51,15 @@ class TestSkillMethods(SkillTestCase):
         on_notification_set.assert_called_once()
         on_notification_clear.assert_called_once()
 
+    def test_api_run_speed_test(self):
+        result = self.skill.run_speed_test()
+        self.assertIsInstance(result, SpeedTestResult)
+        self.assertIsInstance(result.download, float)
+        self.assertGreater(result.download, 1000)
+        self.assertIsInstance(result.upload, float)
+        self.assertGreater(result.upload, 1000)
+        self.assertIsInstance(result.ping, float)
+        self.assertLess(result.ping, 1000)
 
 if __name__ == '__main__':
     unittest.main()
