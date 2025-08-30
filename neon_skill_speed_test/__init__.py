@@ -63,6 +63,10 @@ class SpeedTestSkill(NeonSkill):
 
     @skill_api_method
     def run_speed_test(self) -> SpeedTestResult:
+        """
+        Run a speed test on the system hosting this skill and return the 
+        measured upload, download, and ping results.
+        """
         self.test.download()
         self.test.upload()
         return SpeedTestResult(**self.test.results.dict())
