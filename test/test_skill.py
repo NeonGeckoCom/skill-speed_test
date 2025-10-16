@@ -32,23 +32,37 @@ from mock import Mock
 from ovos_bus_client import Message
 from neon_minerva.tests.skill_unit_test_base import SkillTestCase
 
+from neon_skill_speed_test.models import SpeedTestResult
+
 
 class TestSkillMethods(SkillTestCase):
     def test_handle_run_speed_test(self):
         on_notification_set = Mock()
         on_notification_clear = Mock()
-        self.skill.bus.on("ovos.notification.api.set.controlled",
-                          on_notification_set)
-        self.skill.bus.on("ovos.notification.api.remove.controlled",
-                          on_notification_clear)
+        self.skill.bus.on(
+            "ovos.notification.api.set.controlled", on_notification_set
+        )
+        self.skill.bus.on(
+            "ovos.notification.api.remove.controlled", on_notification_clear
+        )
         self.skill.handle_run_speed_test(Message("test"))
         self.skill.speak_dialog.assert_any_call("start_test")
         args = self.skill.speak_dialog.call_args
         self.assertEqual(args[0][0], "results")
-        self.assertEqual(set(args[0][1].keys()), {'down', 'up', 'ping'})
+        self.assertEqual(set(args[0][1].keys()), {"down", "up", "ping"})
         on_notification_set.assert_called_once()
         on_notification_clear.assert_called_once()
 
+    def test_api_run_speed_test(self):
+        result = self.skill.run_speed_test()
+        self.assertIsInstance(result, SpeedTestResult)
+        self.assertIsInstance(result.download, float)
+        self.assertGreater(result.download, 1000)
+        self.assertIsInstance(result.upload, float)
+        self.assertGreater(result.upload, 1000)
+        self.assertIsInstance(result.ping, float)
+        self.assertLess(result.ping, 1000)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

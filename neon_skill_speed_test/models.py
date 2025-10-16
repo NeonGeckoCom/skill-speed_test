@@ -26,4 +26,10 @@
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-__version__ = "1.0.5a2"
+from pydantic import BaseModel, Field
+
+
+class SpeedTestResult(BaseModel):
+    download: float = Field(description="Download speed in bits per second")
+    upload: float = Field(description="Upload speed in bits per second")
+    ping: float = Field(description="Ping in milliseconds")

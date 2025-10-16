@@ -32,18 +32,15 @@ from ovos_utils import classproperty
 from ovos_utils.log import LOG
 from ovos_utils.process_utils import RuntimeRequirements
 from neon_utils.skills.neon_skill import NeonSkill
-from ovos_workshop.decorators import intent_handler
+from ovos_workshop.decorators import intent_handler, skill_api_method
+
+from neon_skill_speed_test.models import SpeedTestResult
 
 
 class SpeedTestSkill(NeonSkill):
     def __init__(self, **kwargs):
         NeonSkill.__init__(self, **kwargs)
         self._test = None
-        try:
-            server = self.test.get_best_server()
-            LOG.debug(f"Selected: {server}")
-        except Exception as e:
-            LOG.exception(e)
         # TODO: Support configured server
 
     @property
@@ -64,6 +61,16 @@ class SpeedTestSkill(NeonSkill):
                                    no_network_fallback=False,
                                    no_gui_fallback=True)
 
+    @skill_api_method
+    def run_speed_test(self) -> SpeedTestResult:
+        """
+        Run a speed test on the system hosting this skill and return the 
+        measured upload, download, and ping results.
+        """
+        self.test.download()
+        self.test.upload()
+        return SpeedTestResult(**self.test.results.dict())
+
     @intent_handler("run_speed_test.intent")
     def handle_run_speed_test(self, message):
         self.speak_dialog("start_test")
@@ -71,13 +78,11 @@ class SpeedTestSkill(NeonSkill):
             "ovos.notification.api.set.controlled",
             {"sender": self.skill_id,
              "text": self.translate("notify_testing")}))
-        self.test.download()
-        self.test.upload()
-        res = self.test.results.dict()
+        res = self.run_speed_test()
         # TODO: Better rounding logic for kbps vs Mbps vs Gbps
-        down = round(res['download']/1000000)
-        up = round(res['upload']/1000000)
-        ping = round(res['ping'])
+        down = round(res.download/1000000)
+        up = round(res.upload/1000000)
+        ping = round(res.ping)
         LOG.info(res)
         self.bus.emit(message.forward(
             "ovos.notification.api.remove.controlled"))
