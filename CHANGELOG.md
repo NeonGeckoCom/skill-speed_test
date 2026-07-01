@@ -1,20 +1,52 @@
 # Changelog
 
-## [1.0.4a2](https://github.com/NeonGeckoCom/skill-speed_test/tree/1.0.4a2) (2025-03-11)
+## [1.0.5a5](https://github.com/NeonGeckoCom/skill-speed_test/tree/1.0.5a5) (2026-07-01)
 
-[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/1.0.4a1...1.0.4a2)
+[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/1.0.5a4...1.0.5a5)
 
-**Merged pull requests:**
+**Fixed bugs:**
 
-- Update automation, gitignore, and license notices [\#54](https://github.com/NeonGeckoCom/skill-speed_test/pull/54) ([NeonDaniel](https://github.com/NeonDaniel))
-
-## [1.0.4a1](https://github.com/NeonGeckoCom/skill-speed_test/tree/1.0.4a1) (2024-09-17)
-
-[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/1.0.3...1.0.4a1)
+- \[BUG\] Skill does not work anymore [\#60](https://github.com/NeonGeckoCom/skill-speed_test/issues/60)
 
 **Merged pull requests:**
 
-- Update OVOS depdendencies for 0.x compat [\#53](https://github.com/NeonGeckoCom/skill-speed_test/pull/53) ([NeonDaniel](https://github.com/NeonDaniel))
+- Replace deprecated `speedtest` package [\#63](https://github.com/NeonGeckoCom/skill-speed_test/pull/63) ([NeonDaniel](https://github.com/NeonDaniel))
+
+## [1.0.5a4](https://github.com/NeonGeckoCom/skill-speed_test/tree/1.0.5a4) (2026-06-26)
+
+[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/1.0.5a3...1.0.5a4)
+
+**Merged pull requests:**
+
+- Update dependencies to stable versions [\#62](https://github.com/NeonGeckoCom/skill-speed_test/pull/62) ([NeonDaniel](https://github.com/NeonDaniel))
+
+## [1.0.5a3](https://github.com/NeonGeckoCom/skill-speed_test/tree/1.0.5a3) (2025-12-04)
+
+[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/1.0.5a2...1.0.5a3)
+
+**Merged pull requests:**
+
+- Ukrainian translation and tests  [\#59](https://github.com/NeonGeckoCom/skill-speed_test/pull/59) ([NeonDmitry](https://github.com/NeonDmitry))
+
+## [1.0.5a2](https://github.com/NeonGeckoCom/skill-speed_test/tree/1.0.5a2) (2025-08-30)
+
+[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/1.0.5a1...1.0.5a2)
+
+**Merged pull requests:**
+
+- Implement Skill API method with unit test [\#58](https://github.com/NeonGeckoCom/skill-speed_test/pull/58) ([NeonDaniel](https://github.com/NeonDaniel))
+
+## [1.0.5a1](https://github.com/NeonGeckoCom/skill-speed_test/tree/1.0.5a1) (2025-08-29)
+
+[Full Changelog](https://github.com/NeonGeckoCom/skill-speed_test/compare/1.0.4...1.0.5a1)
+
+**Implemented enhancements:**
+
+- \[FEAT\] Help dialog pronunciation [\#39](https://github.com/NeonGeckoCom/skill-speed_test/issues/39)
+
+**Merged pull requests:**
+
+- Refactor into a structure that supports editable installation [\#57](https://github.com/NeonGeckoCom/skill-speed_test/pull/57) ([NeonDaniel](https://github.com/NeonDaniel))
 
 
 
