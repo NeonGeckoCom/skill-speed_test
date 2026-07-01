@@ -27,6 +27,7 @@
 # SOFTWARE,  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import mbps as speedtest
+from mbps.exceptions import ConfigRetrievalError, SpeedtestException
 
 from ovos_utils import classproperty
 from ovos_utils.log import LOG
@@ -45,8 +46,7 @@ class SpeedTestSkill(NeonSkill):
 
     @property
     def test(self):
-        # TODO: Handle 403 errors
-        self._test = self._test or speedtest.Speedtest()
+        self._test = self._test or speedtest.Speedtest(secure=True)
         return self._test
 
     @classproperty
@@ -78,7 +78,14 @@ class SpeedTestSkill(NeonSkill):
             "ovos.notification.api.set.controlled",
             {"sender": self.skill_id,
              "text": self.translate("notify_testing")}))
-        res = self.run_speed_test()
+        try:
+            res = self.run_speed_test()
+        except (ConfigRetrievalError, SpeedtestException) as e:
+            LOG.error(e, exc_info=True)
+            self._test = None
+            self.bus.emit(message.forward(
+                "ovos.notification.api.remove.controlled"))
+            raise e  # Raise for generic error handling message
         # TODO: Better rounding logic for kbps vs Mbps vs Gbps
         down = round(res.download/1000000)
         up = round(res.upload/1000000)
